@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      My app
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="p-buttom">
+    <ion-button expand="full" color="dark" (click)="add()">Add</ion-button>
+  </div>
+  <div class="size-bg" *ngFor="let num of size;let i = index">
+    <span style="display: flex;">
+            <ion-col>
+                <ion-item lines="none" size="6" class="border">
+                    <ion-label position="stacked">weight</ion-label>
+            <ion-input type="text" class="uppercase" [(ngModel)]="num.weight" name="menuCode"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item lines="none" size="6" class="border">
+                    <ion-label position="stacked">Price</ion-label>
+            <ion-input type="text" class="uppercase" [(ngModel)]="num.price" name="menuCode"></ion-input>
+                </ion-item>
+            </ion-col>
+        </span>
+    <ion-label style="color: black; ">quantity</ion-label>
+    <ion-col size="12">
+      <div class="add-quatity">
+        <ion-button class="removeBtn no-padding " fill="solid " slot="end" style="color: black;"
+          (click)="minusQuantity(num) ">
+          -
+        </ion-button>
+        <ion-input class="itemCount no-padding" name="quantity" value="{{num.quantity}}"></ion-input>
+        <ion-button class="addBtn no-padding " fill="solid " slot="end" style="color: black;"
+          (click)="addQuantity(num)">
+          +
+        </ion-button>
+      </div>
+    </ion-col>
+    <div>
+      <ion-button expand="full" color="danger" *ngIf="i >0" (click)="remove(i)">Delete</ion-button>
+    </div>
+  </div>
+  <div>
+    <ion-button fill="solid " slot="end" (click)="addMenu() ">Submit</ion-button>
+  </div>
+</ion-content>
